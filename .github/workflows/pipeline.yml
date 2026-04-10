@@ -1,0 +1,39 @@
+name: DevOps Pipeline
+
+# TRIGGER: Run whenever code is pushed to the main branch
+on:
+  push:
+    branches:
+      - main
+
+# JOBS: What the pipeline actually does
+jobs:
+  build:
+    # Use a fresh Ubuntu virtual machine for each run
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Download the repository code onto the runner
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # Step 2: Show which files are in the repository
+      - name: List project files
+        run: ls -la
+
+      # Step 3: Simulate installing dependencies
+      - name: Install dependencies
+        run: echo "Installing dependencies... done."
+
+      # Step 4: Simulate running tests
+      - name: Run tests
+        run: echo "Running tests... all tests passed."
+
+      # Step 5: Simulate building the application
+      - name: Build application
+        run: echo "Building application... build successful."
+
+      # Step 6: Print a completion message
+        # NOTE: fixed indentation here 👇
+      - name: Pipeline complete
+        run: echo "Pipeline finished. Ready for deployment."
